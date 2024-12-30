@@ -1,6 +1,8 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_firebase1/screens/lampsscreen.dart';
+import 'package:flutter_firebase1/widgets/banner_child.dart';
 import '../firebase_options.dart';
 
 class Homescreen extends StatefulWidget {
@@ -60,99 +62,44 @@ class _Homescreen extends State<Homescreen> {
 
     return Padding(
       padding: const EdgeInsets.all(20),
-      child: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        primary: false,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.blue, width: 4),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.lightBlue.withOpacity(0.3),
-                  spreadRadius: 2,
-                  blurRadius: 1,
-                  offset: const Offset(2.0, 2.0), // changes position of shadow
-                ),
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                color: Colors.lightBlue),
+            width: double.infinity,
+            padding: const EdgeInsets.all(8),
+            child: const Row(
               children: [
-                const Text(
-                  'Temperature',
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold),
+                BannerChild(
+                  title: "Temperature",
+                  value: "24",
+                  unit: "°C",
+                  images: "assets/thermometer.png",
                 ),
-                const SizedBox(
-                  height: 4,
+                BannerChild(
+                  title: "Humidity",
+                  value: "40",
+                  unit: "%",
+                  images: "assets/HumidityLogo.png",
                 ),
-                Row(
-                  children: [
-                    Image.asset(
-                      'assets/thermometer.png',
-                      height: 60,
-                      width: 60,
-                    ),
-                    const Text('30°C',
-                        style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue))
-                  ],
-                )
               ],
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.blue, width: 4),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.lightBlue.withOpacity(0.3),
-                  spreadRadius: 2,
-                  blurRadius: 1,
-                  offset: const Offset(2.0, 2.0), // changes position of shadow
-                ),
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Humidity',
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
-                Row(
-                  children: [
-                    Image.asset(
-                      'assets/HumidityLogo.png',
-                      height: 60,
-                      width: 60,
-                    ),
-                    const Text('30%',
-                        style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue))
-                  ],
-                )
-              ],
-            ),
+          const SizedBox(
+            height: 10,
+          ),
+          const Text(
+            "Devices",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          const SizedBox(
+            height: 10,
           ),
           Container(
+            width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: Colors.blue, width: 4),
@@ -165,27 +112,40 @@ class _Homescreen extends State<Homescreen> {
                 ),
               ],
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            padding: const EdgeInsets.all(8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Lamp',
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold),
+                Image.asset(
+                  'assets/lightbulb.png',
+                  height: 60,
+                  width: 60,
                 ),
-                const SizedBox(
-                  height: 4,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Image.asset(
-                      'assets/lightbulb.png',
-                      height: 60,
-                      width: 60,
+                    const Text(
+                      'Lamp',
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold),
                     ),
+                    const Text(
+                      '4 Devices',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                      ),
+                    ),
+                    TextButton(
+                        onPressed: () => {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return const Lampsscreen();
+                              }))
+                            },
+                        child: const Text("Details"))
                   ],
                 )
               ],
@@ -194,6 +154,143 @@ class _Homescreen extends State<Homescreen> {
         ],
       ),
     );
+
+    // return Padding(
+    //   padding: const EdgeInsets.all(20),
+    //   child: GridView.count(
+    //     crossAxisCount: 2,
+    //     crossAxisSpacing: 10,
+    //     mainAxisSpacing: 10,
+    //     primary: false,
+    //     children: [
+    //       Container(
+    //         decoration: BoxDecoration(
+    //           color: Colors.white,
+    //           border: Border.all(color: Colors.blue, width: 4),
+    //           boxShadow: [
+    //             BoxShadow(
+    //               color: Colors.lightBlue.withOpacity(0.3),
+    //               spreadRadius: 2,
+    //               blurRadius: 1,
+    //               offset: const Offset(2.0, 2.0), // changes position of shadow
+    //             ),
+    //           ],
+    //         ),
+    //         child: Column(
+    //           mainAxisAlignment: MainAxisAlignment.center,
+    //           children: [
+    //             const Text(
+    //               'Temperature',
+    //               style: TextStyle(
+    //                   fontSize: 24,
+    //                   color: Colors.blue,
+    //                   fontWeight: FontWeight.bold),
+    //             ),
+    //             const SizedBox(
+    //               height: 4,
+    //             ),
+    //             Row(
+    //               children: [
+    //                 Image.asset(
+    //                   'assets/thermometer.png',
+    //                   height: 60,
+    //                   width: 60,
+    //                 ),
+    //                 const Text('30°C',
+    //                     style: TextStyle(
+    //                         fontSize: 40,
+    //                         fontWeight: FontWeight.bold,
+    //                         color: Colors.blue))
+    //               ],
+    //             )
+    //           ],
+    //         ),
+    //       ),
+    //       Container(
+    //         decoration: BoxDecoration(
+    //           color: Colors.white,
+    //           border: Border.all(color: Colors.blue, width: 4),
+    //           boxShadow: [
+    //             BoxShadow(
+    //               color: Colors.lightBlue.withOpacity(0.3),
+    //               spreadRadius: 2,
+    //               blurRadius: 1,
+    //               offset: const Offset(2.0, 2.0), // changes position of shadow
+    //             ),
+    //           ],
+    //         ),
+    //         child: Column(
+    //           mainAxisAlignment: MainAxisAlignment.center,
+    //           children: [
+    //             const Text(
+    //               'Humidity',
+    //               style: TextStyle(
+    //                   fontSize: 24,
+    //                   color: Colors.blue,
+    //                   fontWeight: FontWeight.bold),
+    //             ),
+    //             const SizedBox(
+    //               height: 4,
+    //             ),
+    //             Row(
+    //               children: [
+    //                 Image.asset(
+    //                   'assets/HumidityLogo.png',
+    //                   height: 60,
+    //                   width: 60,
+    //                 ),
+    //                 const Text('30%',
+    //                     style: TextStyle(
+    //                         fontSize: 40,
+    //                         fontWeight: FontWeight.bold,
+    //                         color: Colors.blue))
+    //               ],
+    //             )
+    //           ],
+    //         ),
+    //       ),
+    //       Container(
+    //         decoration: BoxDecoration(
+    //           color: Colors.white,
+    //           border: Border.all(color: Colors.blue, width: 4),
+    //           boxShadow: [
+    //             BoxShadow(
+    //               color: Colors.lightBlue.withOpacity(0.3),
+    //               spreadRadius: 2,
+    //               blurRadius: 1,
+    //               offset: const Offset(2.0, 2.0), // changes position of shadow
+    //             ),
+    //           ],
+    //         ),
+    //         child: Column(
+    //           mainAxisAlignment: MainAxisAlignment.center,
+    //           children: [
+    //             const Text(
+    //               'Lamp',
+    //               style: TextStyle(
+    //                   fontSize: 24,
+    //                   color: Colors.blue,
+    //                   fontWeight: FontWeight.bold),
+    //             ),
+    //             const SizedBox(
+    //               height: 4,
+    //             ),
+    //             Row(
+    //               mainAxisAlignment: MainAxisAlignment.center,
+    //               children: [
+    //                 Image.asset(
+    //                   'assets/lightbulb.png',
+    //                   height: 60,
+    //                   width: 60,
+    //                 ),
+    //               ],
+    //             )
+    //           ],
+    //         ),
+    //       ),
+    //     ],
+    //   ),
+    // );
 
     // return Padding(
     //   padding: const EdgeInsets.all(20),
