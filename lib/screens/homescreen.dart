@@ -14,9 +14,10 @@ class Homescreen extends StatefulWidget {
 class _Homescreen extends State<Homescreen> {
   final Future<FirebaseApp> _firebaseApp =
       Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  String isOnValue = "true";
-  String temperatureValue = "0";
-  String isOpenValue = "true";
+
+  String temperature = "0";
+  String kelembapan = "0";
+  String lampCount = "0";
 
   @override
   Widget build(BuildContext context) {
@@ -44,19 +45,21 @@ class _Homescreen extends State<Homescreen> {
   Widget content() {
     DatabaseReference testRef = FirebaseDatabase.instance.ref();
 
-    testRef.child('data/isOn').onValue.listen((event) {
+    testRef.child('/suhu').onValue.listen((event) {
       setState(() {
-        isOnValue = event.snapshot.value.toString();
+        temperature = event.snapshot.value.toString();
       });
     });
-    testRef.child('data/temperature').onValue.listen((event) {
+
+    testRef.child('/kelembapan').onValue.listen((event) {
       setState(() {
-        temperatureValue = event.snapshot.value.toString();
+        kelembapan = event.snapshot.value.toString();
       });
     });
-    testRef.child('data/isOpen').onValue.listen((event) {
+
+    testRef.child('/lamps').onValue.listen((event) {
       setState(() {
-        isOpenValue = event.snapshot.value.toString();
+        lampCount = event.snapshot.children.length.toString();
       });
     });
 
@@ -71,17 +74,17 @@ class _Homescreen extends State<Homescreen> {
                 color: Colors.lightBlue),
             width: double.infinity,
             padding: const EdgeInsets.all(8),
-            child: const Row(
+            child: Row(
               children: [
                 BannerChild(
                   title: "Temperature",
-                  value: "24",
+                  value: temperature,
                   unit: "°C",
                   images: "assets/thermometer.png",
                 ),
                 BannerChild(
                   title: "Humidity",
-                  value: "40",
+                  value: kelembapan,
                   unit: "%",
                   images: "assets/HumidityLogo.png",
                 ),
@@ -131,9 +134,9 @@ class _Homescreen extends State<Homescreen> {
                           color: Colors.blue,
                           fontWeight: FontWeight.bold),
                     ),
-                    const Text(
-                      '4 Devices',
-                      style: TextStyle(
+                    Text(
+                      "$lampCount Devices",
+                      style: const TextStyle(
                         fontSize: 20,
                         color: Colors.blue,
                       ),

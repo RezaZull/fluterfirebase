@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class Lampscard extends StatefulWidget {
+  final int deviceIndex;
   final String deviceName;
+  final bool deviceFlagOn;
+  final dynamic changeLampFlagOn;
   const Lampscard({
     super.key,
     required this.deviceName,
+    required this.deviceFlagOn,
+    required this.changeLampFlagOn,
+    required this.deviceIndex,
   });
 
   @override
@@ -12,8 +18,6 @@ class Lampscard extends StatefulWidget {
 }
 
 class _LampsCard extends State<Lampscard> {
-  bool status = false;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,11 +50,9 @@ class _LampsCard extends State<Lampscard> {
             width: 60,
           ),
           Switch(
-              value: status,
+              value: widget.deviceFlagOn,
               onChanged: (value) {
-                setState(() {
-                  status = value;
-                });
+                widget.changeLampFlagOn(widget.deviceIndex, value);
               })
         ],
       ),
