@@ -41,53 +41,54 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCbsr_AptPOy4ozGeOGKxPzUTeYiehp0VQ',
-    appId: '1:848049891560:web:3e792ddbead8517a2fc15d',
-    messagingSenderId: '848049891560',
-    projectId: 'iotreza-20664',
-    authDomain: 'iotreza-20664.firebaseapp.com',
-    databaseURL: 'https://iotreza-20664-default-rtdb.firebaseio.com',
-    storageBucket: 'iotreza-20664.firebasestorage.app',
-    measurementId: 'G-6ZBB4V5NKE',
+    apiKey: 'AIzaSyDQqfrmN0lzju2BY_M9ayVRIZejV4pl5Vc',
+    appId: '1:388558775788:web:6285d79b826fdf50f30cc9',
+    messagingSenderId: '388558775788',
+    projectId: 'iotsmarthome-6da49',
+    authDomain: 'iotsmarthome-6da49.firebaseapp.com',
+    databaseURL: 'https://iotsmarthome-6da49-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'iotsmarthome-6da49.firebasestorage.app',
+    measurementId: 'G-4DTBM74VWY',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDDwpsWvRYLDT28AblzAx6saktGSxfL1gE',
-    appId: '1:848049891560:android:b79ba4974324c2002fc15d',
-    messagingSenderId: '848049891560',
-    projectId: 'iotreza-20664',
-    databaseURL: 'https://iotreza-20664-default-rtdb.firebaseio.com',
-    storageBucket: 'iotreza-20664.firebasestorage.app',
+    apiKey: 'AIzaSyBXjy3-R9tjDaVQ6YrLH3okHBqdG1KEeeQ',
+    appId: '1:388558775788:android:8552e77dcd04d256f30cc9',
+    messagingSenderId: '388558775788',
+    projectId: 'iotsmarthome-6da49',
+    databaseURL: 'https://iotsmarthome-6da49-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'iotsmarthome-6da49.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC0TjYQoX-7YfFb6DFZvd7u5MUgUoGuBwc',
-    appId: '1:848049891560:ios:6effec5549bb1ab52fc15d',
-    messagingSenderId: '848049891560',
-    projectId: 'iotreza-20664',
-    databaseURL: 'https://iotreza-20664-default-rtdb.firebaseio.com',
-    storageBucket: 'iotreza-20664.firebasestorage.app',
+    apiKey: 'AIzaSyCwooy2IomajwpMN0XnV4nPQ-oJdwczgcg',
+    appId: '1:388558775788:ios:1814939c7646a81bf30cc9',
+    messagingSenderId: '388558775788',
+    projectId: 'iotsmarthome-6da49',
+    databaseURL: 'https://iotsmarthome-6da49-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'iotsmarthome-6da49.firebasestorage.app',
     iosBundleId: 'com.example.flutterFirebase1',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyC0TjYQoX-7YfFb6DFZvd7u5MUgUoGuBwc',
-    appId: '1:848049891560:ios:6effec5549bb1ab52fc15d',
-    messagingSenderId: '848049891560',
-    projectId: 'iotreza-20664',
-    databaseURL: 'https://iotreza-20664-default-rtdb.firebaseio.com',
-    storageBucket: 'iotreza-20664.firebasestorage.app',
+    apiKey: 'AIzaSyCwooy2IomajwpMN0XnV4nPQ-oJdwczgcg',
+    appId: '1:388558775788:ios:1814939c7646a81bf30cc9',
+    messagingSenderId: '388558775788',
+    projectId: 'iotsmarthome-6da49',
+    databaseURL: 'https://iotsmarthome-6da49-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'iotsmarthome-6da49.firebasestorage.app',
     iosBundleId: 'com.example.flutterFirebase1',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCbsr_AptPOy4ozGeOGKxPzUTeYiehp0VQ',
-    appId: '1:848049891560:web:bd48ba51a99423572fc15d',
-    messagingSenderId: '848049891560',
-    projectId: 'iotreza-20664',
-    authDomain: 'iotreza-20664.firebaseapp.com',
-    databaseURL: 'https://iotreza-20664-default-rtdb.firebaseio.com',
-    storageBucket: 'iotreza-20664.firebasestorage.app',
-    measurementId: 'G-8Y685RJXHJ',
+    apiKey: 'AIzaSyDQqfrmN0lzju2BY_M9ayVRIZejV4pl5Vc',
+    appId: '1:388558775788:web:3c6ffc1023886245f30cc9',
+    messagingSenderId: '388558775788',
+    projectId: 'iotsmarthome-6da49',
+    authDomain: 'iotsmarthome-6da49.firebaseapp.com',
+    databaseURL: 'https://iotsmarthome-6da49-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'iotsmarthome-6da49.firebasestorage.app',
+    measurementId: 'G-9L2V2LKKNZ',
   );
+
 }

@@ -1,22 +1,22 @@
 {
   "project_info": {
-    "project_number": "848049891560",
-    "firebase_url": "https://iotreza-20664-default-rtdb.firebaseio.com",
-    "project_id": "iotreza-20664",
-    "storage_bucket": "iotreza-20664.firebasestorage.app"
+    "project_number": "388558775788",
+    "firebase_url": "https://iotsmarthome-6da49-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "iotsmarthome-6da49",
+    "storage_bucket": "iotsmarthome-6da49.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:848049891560:android:b79ba4974324c2002fc15d",
+        "mobilesdk_app_id": "1:388558775788:android:8552e77dcd04d256f30cc9",
         "android_client_info": {
-          "package_name": "com.reza.iotApp"
+          "package_name": "com.IoTSmartHome.app"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDDwpsWvRYLDT28AblzAx6saktGSxfL1gE"
+          "current_key": "AIzaSyBXjy3-R9tjDaVQ6YrLH3okHBqdG1KEeeQ"
         }
       ],
       "services": {
