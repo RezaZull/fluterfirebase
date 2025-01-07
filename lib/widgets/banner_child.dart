@@ -17,6 +17,7 @@ class BannerChild extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
             images,

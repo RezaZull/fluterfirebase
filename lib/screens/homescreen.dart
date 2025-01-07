@@ -2,6 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_firebase1/screens/lampsscreen.dart';
+import 'package:flutter_firebase1/screens/loginscreen.dart';
 import 'package:flutter_firebase1/widgets/banner_child.dart';
 import '../firebase_options.dart';
 
@@ -19,26 +20,77 @@ class _Homescreen extends State<Homescreen> {
   String kelembapan = "0";
   String lampCount = "0";
 
+  void _showLogoutPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Logout"),
+          content: const Text("Are you sure you want to log out?"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context), // Tutup popup
+              child: const Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Loginscreen()),
+                );
+              },
+              child: const Text("Logout"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Center(
-          child: Text("Monitoring Smart Home"),
+          child: Text(
+            "Monitoring Smart Home",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
         ),
+        backgroundColor: const Color.fromRGBO(158, 105, 255, 100),
+        leading: IconButton(
+          icon: const Icon(Icons.logout), // Ikon profil
+          onPressed: () {
+            // Tambahkan aksi jika diperlukan
+            _showLogoutPopup(context);
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person), // Ikon menu
+            onPressed: () {
+              // Tampilkan popup logout saat ikon ditekan
+              debugPrint("Menu icon pressed");
+            },
+          ),
+        ],
       ),
       body: FutureBuilder(
-          future: _firebaseApp,
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return const Text("Tidak koneksi ke Firebase");
-            } else if (snapshot.hasData) {
-              return content();
-            } else {
-              return const CircularProgressIndicator();
-            }
-          }),
+        future: _firebaseApp,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Text("Tidak koneksi ke Firebase");
+          } else if (snapshot.hasData) {
+            return content();
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
     );
   }
 
@@ -68,10 +120,29 @@ class _Homescreen extends State<Homescreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Gambar ruang tamu disesuaikan dengan ukuran teks
+          Image.asset(
+            'assets/living.png',
+            height: 200, // Sesuaikan tinggi gambar dengan teks
+            width: double.infinity, // Mengisi lebar penuh
+            fit: BoxFit
+                .cover, // Menyesuaikan gambar dengan area tanpa merusak aspek rasio
+          ),
+          const SizedBox(height: 10),
+          const Text(
+            "Welcome to This Application",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(height: 20),
+          // Container untuk tampilan suhu dan kelembapan
           Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
-                color: Colors.lightBlue),
+                color: Colors.deepPurple),
             width: double.infinity,
             padding: const EdgeInsets.all(8),
             child: Row(
@@ -91,27 +162,24 @@ class _Homescreen extends State<Homescreen> {
               ],
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           const Text(
             "Devices",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
+          // Container untuk perangkat lampu
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.blue, width: 4),
+              color: Colors.deepPurple,
+              border: Border.all(color: Colors.black45, width: 4),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.lightBlue.withOpacity(0.3),
+                  color: Colors.deepPurple.withOpacity(0.3),
                   spreadRadius: 2,
                   blurRadius: 1,
-                  offset: const Offset(2.0, 2.0), // changes position of shadow
+                  offset: const Offset(2.0, 2.0),
                 ),
               ],
             ),
@@ -131,14 +199,14 @@ class _Homescreen extends State<Homescreen> {
                       'Lamp',
                       style: TextStyle(
                           fontSize: 24,
-                          color: Colors.blue,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "$lampCount Devices",
                       style: const TextStyle(
                         fontSize: 20,
-                        color: Colors.blue,
+                        color: Colors.white,
                       ),
                     ),
                     TextButton(
@@ -148,7 +216,11 @@ class _Homescreen extends State<Homescreen> {
                                 return const Lampsscreen();
                               }))
                             },
-                        child: const Text("Details"))
+                        child: const Text(
+                          "Details",
+                          style: TextStyle(
+                              fontSize: 16, color: Colors.lightBlueAccent),
+                        ))
                   ],
                 )
               ],

@@ -22,11 +22,11 @@ class _LampsCard extends State<Lampscard> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Colors.blue, width: 4),
+        color: Colors.deepPurple,
+        border: Border.all(color: Colors.black45, width: 4),
         boxShadow: [
           BoxShadow(
-            color: Colors.lightBlue.withOpacity(0.3),
+            color: Colors.deepPurple.withOpacity(0.3),
             spreadRadius: 2,
             blurRadius: 1,
             offset: const Offset(2.0, 2.0), // changes position of shadow
@@ -39,21 +39,44 @@ class _LampsCard extends State<Lampscard> {
           Text(
             widget.deviceName,
             style: const TextStyle(
-                fontSize: 24, color: Colors.blue, fontWeight: FontWeight.bold),
+                fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 4,
           ),
-          Image.asset(
-            'assets/lightbulb.png',
-            height: 60,
-            width: 60,
+          Icon(
+            Icons.lightbulb,
+            size: 60,
+            color: widget.deviceFlagOn ? Colors.yellow : Colors.grey,
           ),
-          Switch(
-              value: widget.deviceFlagOn,
-              onChanged: (value) {
-                widget.changeLampFlagOn(widget.deviceIndex, value);
-              })
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "OFF",
+                style: TextStyle(
+                    color: widget.deviceFlagOn ? Colors.grey : Colors.yellow,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Switch(
+                    value: widget.deviceFlagOn,
+                    activeColor: Colors.yellow,
+                    onChanged: (value) {
+                      widget.changeLampFlagOn(widget.deviceIndex, value);
+                    }),
+              ),
+              Text(
+                "ON",
+                style: TextStyle(
+                    color: widget.deviceFlagOn ? Colors.yellow : Colors.grey,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold),
+              )
+            ],
+          )
         ],
       ),
     );

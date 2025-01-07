@@ -22,7 +22,15 @@ class _Lampsscreen extends State<Lampsscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Lamps"),
+        title: const Text(
+          "Lamps",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        backgroundColor: const Color.fromRGBO(158, 105, 255, 100),
       ),
       body: FutureBuilder(
           future: _firebaseApp,
